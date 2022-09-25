@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<h1>Week 2 Notes</h1>
+
+<p>
+    Eloquent Javascript - Program Structure & Functions
+</p>
+/Using if/else statements<br>
+
+<script>let theNumber = Number(prompt("Pick a number"));
+if (!Number.isNaN(theNumber)) {
+  console.log("Your number is the square root of " +
+              theNumber * theNumber);
+} else {
+  console.log("Hey. Why didn't you give me a number?");
+}</script>
+
+
+<p>
+    Loops:<br>
+    while - executes function while the answer is still true<br>
+    do - always executes function once, because it runs the function once before it checks for true
+    - test appears after the body of the loop
+</p>
+
+//Using do loop<br>
+<script>let yourName;
+do {
+  yourName = prompt("Who are you?");
+} while (!yourName);
+console.log(yourName);<br></script>
+
+//FOR Loops<br>
+<script>for (let number = 0; number <= 12; number = number + 2) {
+    console.log(number);
+  }</script>
+  // → 0
+  // → 2
+  //   … etcetera
+
+<p>Parentheses after a FOR keyword must contain two semicolons.<br>
+    part before the first semicolons initializes the Loops<br>
+    Second part is the expression that checks whether the loop must continue<br>
+    Final part updates the state of the loop after every iteration</p>
+
+//Same as above, just now using the for loop:<br>
+<script>let result = 1;
+for (let counter = 0; counter < 10; counter = counter + 1) {
+  result = result * 2;
+}
+console.log(result);</script>
+// → 1024<br><br>
+
+
+//FIZZBUZZ exercise<br>
+
+<script>for (let number = 0; number <= 100; number++) {
+    if ((number % 3 == 0) && (number % 5 == 0)) {console.log("FizzBuzz");}
+    else if (number % 3 == 0) { console.log("Fizz");}
+    else if (number % 5 == 0) { console.log("Buzz"); }
+    else {console.log(number);}
+  }</script>
+
+</body>
+</html>
