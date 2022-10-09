@@ -1,2 +1,105 @@
 Week 4 Notes
 
+FORMS
+Search form: 
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Search</title>
+</head>
+<body>
+    <form name='search' action='/search'>
+        <input name='searchInput'>
+        <button type='submit'>Search</button>
+    </form>
+<script src='main.js'></script>
+</body>
+</html>
+
+Form properties and methods
+<button type='submit'>Submit</button>
+<input type='submit' value='Submit'>
+<input type='image' src='button.png'>
+
+Form Events
+const input = form.elements.searchInput;
+
+input.addEventListener('focus', () => alert('focused'), false);
+
+Submitting A Form
+const form = document.forms['search'];
+form.addEventListener ('submit', search, false);
+
+function search() {
+    alert(' Form Submitted');
+}
+
+Form Controls
+Some common types of form control are:
+
+<input> fields, including text, passwords, check boxes, radio buttons, and file uploads
+
+<select> menus for drop-down lists of options
+
+<textarea> elements for longer text entry
+
+<button> elements for submitting and resetting forms
+
+
+Object Oriented Programming
+
+Object-Oriented Programming
+Object-oriented programming is often used to model representations of objects in the real world. 
+There are three main concepts in OOP: encapsulation, polymorphism and inheritance. I
+
+
+
+
+Objects
+
+An object literal is an object that is created 
+directly in the language by wrapping all its properties and methods in curly braces {}
+
+const superman = {
+    name: 'Superman',
+    'real name': 'Clark Kent',
+    height: 75,
+    weight: 235,
+    hero: true,
+    villain: false,
+    allies: ['Batman','Supergirl','Superboy'],
+    fly() {
+        return 'Up, up and away!';
+    }
+};
+
+each property is a key-value pair
+
+Accessing properties
+superman.name
+<< 'Superman'
+
+
+Calling methods
+To call an object’s method we can also use dot or bracket notation. Calling a method is the same as invoking a function, so parentheses need to be placed after the method name:
+
+Copy
+superman.fly()
+<< 'Up, up and away!'
+
+superman['fly']()
+<< 'Up, up and away!'
+
+Adding properties
+New properties and methods can be added to objects at any time in a program. This is done by simply assigning a value to the new property. For example, if we wanted to add a new city property to our superman object, we would do it like so:
+
+Copy
+superman.city = 'Metropolis';
+<< 'Metropolis'
+
+Objects as Parameters to functions
+
+function greet({greeting,name,age}) {
+    return `${greeting}! My name is ${name} and I am ${age} years old.`;
+}
