@@ -1,0 +1,126 @@
+Testing and Debugging
+
+Use strict - will help you see errors more quickly. Doesn't let you 
+get away with sloppy code. 
+
+If you are using modules, they are automatically in strict mode, so 
+you don't have to invoke "use script" at the beginning of your code.
+
+Linting Tools
+Will highlight errors in your code. 
+can use as a text editor plug in
+can use an online linting tool, where you copy paste your code
+option 3 is installing a linting software on your computer using npm
+
+Linting will help you be more consistent with your code
+
+
+Feature detection
+browsers don't always support all the new features. Use an if statement
+to determine if the browser supports something before it will run it. 
+Ex: if (window.holoDeck) {
+    virtualReality.activate();
+}
+
+Debugging in the browser
+
+using an alert() at certain intervals will let you see which code is being reached
+and what isn't. 
+
+function amIOldEnough(age){
+    if (age = 12) {
+        alert(age);
+        return 'No, sorry.';
+    } else if (age < 18) {
+        return 'Only if you are accompanied by an adult.';
+    }
+    else {
+        return 'Yep, come on in!';
+    }
+}
+
+a few problems with the above code. Should say if (age < 12)
+
+function amIOldEnough(age){
+    if (age < 12) {
+        alert(age);
+        return 'No, sorry.';
+    } else if (age < 18) {
+        return 'Only if you are accompanied by an adult.';
+    }
+    else {
+        return 'Yep, come on in!';
+    }
+}
+
+Using console.log is a good way to debug also
+
+function amIOldEnough(age){
+    console.log(age);
+        if (age < 12) {
+        console.log(`In the if with ${age}`);
+        return 'No, sorry.';
+        } else if (age < 18) {
+        console.log(`In the else-if with ${age}`);
+        return 'Only if you are accompanied by an adult.';
+        } else {
+        console.log(`In the else with ${age}`);
+        return 'Yep, come on in!';
+    }
+}
+
+The console.trace() method will log an interactive stack trace 
+in the console. This will show the functions that were called 
+in the lead up to an exception occurring while the code is running.
+
+Always remember to remove the debugger code before you ship it, because
+it won't work right with those still in the code.
+
+Error objects:
+
+EvalError is not used in the current ECMAScript specification and only 
+retained for backwards compatibility. It was used to identify errors when 
+using the global eval() function.
+
+RangeError is thrown when a number is outside an allowable range of values.
+
+ReferenceError is thrown when a reference is made to an item that doesn’t 
+exist. For example, calling a function that hasn't been defined.
+
+SyntaxError is thrown when there’s an error in the code’s syntax.
+
+TypeError is thrown when there’s an error in the type of value used; 
+for example, a string is used when a number is expected.
+
+URIError is thrown when there’s a problem encoding or decoding the URI.
+
+InternalError is a non-standard error that is thrown when an error 
+occurs in the JavaScript engine. A common cause of this too much recursion.
+
+
+Throwing Exceptions
+
+The throw statement can be applied to any JavaScript expression, 
+causing the execution of the program to stop. For example, all the 
+following lines of code will cause a program to halt:
+
+Copy
+throw 2;
+throw 'Up';
+throw { toys: 'out of pram' };
+
+function squareRoot(number) {
+    'use strict';
+    if (number < 0) {
+        throw new RangeError('You can't find the square root of negative numbers')
+    }
+    return Math.sqrt(number);
+};
+
+Test Driven Development
+
+1. Write tests (that initially fail)
+2. Write code to pass the tests
+3. Refactor the code
+4. Test refactored code
+5. Write more tests for new features
