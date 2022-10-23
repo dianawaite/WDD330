@@ -1,0 +1,115 @@
+body {
+    background-color: rgb(83, 136, 112);
+}
+
+.container {
+    background-color: rgb(188, 214, 202);
+    width: 40%;
+    margin: auto;
+    padding: 5%;
+    border-radius: 5px;
+}
+
+input {
+    background-color: rgb(243, 240, 207);
+    line-height: 45px;
+    border-radius: 5px;
+}
+
+h2 {
+    margin: 5px;
+}
+
+.index {
+    font-size: .7em;
+}
+
+.addBtn {
+    border: black solid 1px;
+    border-radius: 5px;
+    width: 25%;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 800;
+    margin: auto;
+    background-color: rgb(225, 175, 11);
+   
+}
+
+.close {
+    border: black solid 1px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    width: 7%;
+    text-align: center;
+    font-size: .6em;
+    font-weight: 800;
+    background-color: rgb(225, 175, 11);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    line-height: 25px;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+
+ 
+}
+li :hover {
+    background: bisque ;
+}
+
+p {
+    display: none;
+    font-style: italic;
+    font-size: large;
+    color: rgb(211, 105, 57);
+}
+
+#inputContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+ul li.checked {
+    text-decoration: line-through;
+}
+
+
+.close:hover {
+    background: khaki;
+}
+
+#bottomRow {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    flex-wrap: wrap;
+}
+
+#count {
+    font-size: small;
+    color: rgb(46, 70, 209);
+    width: 25%;
+    background-color: white;
+    border-radius: 5px;
+    border-style: none;
+}
+
+button {
+    width: 25%;
+    border-radius: 5px;
+    margin: 1px;
+}
+
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    text-align: center;
+}
