@@ -1,0 +1,96 @@
+FUNCTION PROPERTIES AND METHODS
+
+functions are first-class objects - they can have properties and METHODS
+themselves. 
+
+ex. functions have a length property that returns the number of parameters
+it will take. 
+
+function square(x) {
+    return x*x;
+}
+
+If we query the length property, it shows that it will accept one parameter
+square.length
+<< 1
+
+CALL AND APPLY METHODS
+
+The call() method can be used to set the value of this inside a function
+to an object that is provided as the first arguement.
+
+function sayHello(){
+    return `Hello, my name is ${ this.name }`;
+}
+
+function: sayHello
+unspecified object: this
+property: name
+
+Create some objects that have a name property, then use the call() method
+to invoke the sayHello() function, providing each object as an argument. 
+this will then take the value of this in the function:
+
+const clark = { name: 'Clark' };
+const bruce = { name: 'Bruce' };
+
+sayHello.call(clark);
+<< 'Hello, my name is Clark'
+
+sayHello.call(bruce);
+<< 'Hello, my name is Bruce'
+
+If the function doesn't refer to an object as this in its body, it can still
+be called using the call() method, but you need to provide null as its first
+argument. 
+EX: 
+square.call(null, 4)
+<< 16
+
+The apply() method works similarly, except the arguments of the function are
+provided as an array, even if there is only one argument.
+
+square.apply(null, [4])
+<< 16
+
+These are two powerful methods, as they allow generalized functions to be
+written that are not tied to specific objects by being methods of that object.
+This gives flexibility over how the functions can be used.
+
+CUSTOM PROPERTIES
+
+You can add your own properties to functions the same way you add properties
+to any object in JavaScript. Ex: add a description property to a function 
+that describes what it does:
+
+square.description = 'Squares a number that is provided as an argument'
+<< 'Squares a number that is provided as an argument'
+
+MEMOIZATION
+
+it provides result caching, or MEMOIZATION. 
+If it is a big compute, save the result in a cache property. Then we can
+use it later when we use the same argument - just return the value from the 
+cache, rather than having to compute the result again.
+
+function square(x){
+    square.cache = square.cache || {};
+    if (!square.cache[x]) {
+        square.cache[x] = x*x;
+    }
+    return square.cache[x]
+}
+
+Try calling the function a few times:
+
+square(3);
+<< 9
+
+square(-11);
+<< 121
+
+square.cache;
+<< {"3": 9, "-11": 121}
+
+IMMEDIATELY INVOKED FUNCTION EXPRESSIONS
+IIFE - pronounced "iffy"
