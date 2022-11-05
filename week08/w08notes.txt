@@ -1,0 +1,52 @@
+Transforms and Transitions with CSS3
+
+Transform property - translate, rotate, scale, skew any element on the page. 
+
+Manipulate an element's appearance using transform functions. 
+
+Translation: 
+allow you to move elements left, right, up or down. These functions behave similarly to position:relative;
+when declaring top and left, moving up, down etc.
+
+translated elements can only be moved relative to its current position.
+
+translate(x, y) function moves an element x from the left, and y from the top:
+
+transform: translate(45px, -45px);
+
+can also use translateX or translateY of you just want to move in one direction.
+
+scale
+transform: scale(1.5, 0.25);
+
+transforming does not cause a reflow. Can be good or bad, depending on your needs. 
+
+Ordering transforms matter. 
+  If you rotate before translating, the translate direction will be on the rotated axis. 
+
+
+Transitions
+
+Transitions allow the values of CSS properties to change over time, essentially providing similarly
+simple animations. Ex: if a link changes color on hover,  you can have it gradually fade
+from one color to another instead of a sudden change. 
+ - if the browser lacks support for transitions, the change will be immediate, which is fine too
+
+Transitions are declared along with the regular styles on an element. 
+Rather than writing out an animation in JavaScript, you can simply switch a property value
+and rely on the browser to do all the heavy lifting.
+
+* Here are the steps to create a simple transition using only CSS:
+
+* Declare the original state of the element in the default style declaration.
+
+* Declare the final state of your transitioned element; for example, a :hover state.
+
+* Include the transition functions in your default style declaration using the 
+transition properties, including: transition-property, transition-duration, 
+transition-timing-function, and transition-delay. 
+
+the transition is declared in the default or originating state.
+
+The list of properties that can be animated is found 
+at https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties.
