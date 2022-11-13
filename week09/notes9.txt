@@ -1,0 +1,376 @@
+Chapter 9: the Window object
+
+Browser Object Model (BOM)
+    - a collection of properties and methods that contain information
+    about the browser and computer screen.
+
+    window object - every browser window, tab, popup, frame, and iframe have one
+
+    if you don't know the name of the global object, do this: 
+    // from within the global scope
+    const global = this;
+
+    Global Variables
+        - actual properties of a global object.
+
+    Dialogs - methods of the window object.
+     alert()
+     confirm()
+     prompt()
+
+     window.alert('Hello');
+     << undefined
+
+     window.confirm('Do you wish to continue?');
+     << undefined
+
+     window.prompt('Please enter your name:');
+
+
+Browser information
+
+window.navigator.userAgent
+<< "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) 
+    AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8"
+*don't count on this, not always reliable
+
+window.location - property is an object that contains information about the 
+URL of the current page. 
+    - href property returns the full URL as a string: 
+
+    window.location.href 
+    << "https://www.sitepoint.com/premium/books/javascript-novice-to-ninja"
+
+    read/write property: it can also be changed by assignment.
+
+    window.location.href = 'https://www.sitepoint.com/javascript/'
+    << "https://www.sitepoint.com/javascript/"
+
+
+    protocal property returns a string describing the protocol used
+
+    window.location.protocol 
+    << "https:"
+
+    host property returns a string describing the domain of the current URL 
+    and the port number (this is often omitted if the default port 80 is used):
+
+    window.location.host
+    << "www.sitepoint.com"
+
+    hostname property returns a string describing the domain of the current URL
+
+    window.location.hostname
+    << "www.sitepoint.com"
+
+    window.location.port
+    << ""
+
+    pathname property returns a string of the path that follows the domain: 
+
+    window.location.pathname
+    << "/premium/books/javascript-novice-to-ninja"
+
+
+COntrolling Windows
+
+a new window can be opened using the window.open() method. 
+1st parameter: URL, 
+2nd parameter: window title
+3rd parameter: a list of attributes
+this can also be assigned a variable, so the window can be referenced later
+
+const popup = window.open('https://sitepoint.com','
+SitePoint','width=400,height=400,resizable=yes');
+
+
+Screen information
+
+window.screen - contains info about the screen the browser is displayed on. 
+
+window.screen.height
+<< 1024
+
+window.screen.width
+<< 1280
+
+you can get the available height and width using availHeight and availWidth
+
+colorDepth - find the color bit depth of the user's monitor
+
+window.screen.colorDepth;
+<< 24
+
+** most of these ^^ methods are not used anymore, and can be accomplished
+with different methods.
+
+
+The Document Object
+
+each window object contains a document object. 
+
+document.write() - writes a string of text to the page. If the page has
+already loaded, it will completely replace the current document.
+
+document.write('Hello, world!');
+
+ - can also be used within a document inside <script> tags to inject a string into markup.
+ This will not overwrite the rest of the HTML on the page (like regular document.write will)
+
+ ** the use of document.write() is frowned upon. 
+
+
+ Cookies
+
+ ** the use of cookies is slowly being replaced by the new HTML5 localStorage applied
+  - it allows more data to be stored.
+
+  cookies take the form of a text file that contains a list of name/value pairs:
+
+  "name=Superman; hero=true; city=Metropolis"
+
+Creating cookies
+
+to create a cookie, you assign it to JavaScript's "cookie jar", using document.cookie property:
+
+document.cookie = 'name=Superman';
+<< "name=Superman"
+
+we can add more cookies, it won't overwrite the entire property. 
+
+Changing cookie values. 
+
+can be reassigned using document.cookie using the same name but a different value:
+
+document.cookie = 'name=Batman'
+<< "name=Batman"
+
+Reading Cookies
+
+to see the current contents of the cookie jar, simply enter document.cookie
+
+document.cookie:
+<< "name=Batman; hero=true; city=Gotham"
+
+
+Timing functions
+
+setTimeout()
+
+window.setTimeout( () => alert("Time's up!"), 3000);
+<< 4
+
+
+Chapter Summary
+The window object is the global object in a browser.
+
+Global variables are actually properties of the window object in a browser environment.
+
+alert, confirm(), and prompt() are all methods of the window object, and open dialogs that halt the execution of the program.
+
+The window.navigator object gives information about the user’s browser and operating system, although it can be unreliable.
+
+The window.location object provides information about the URL of the current page.
+
+The window.history object keeps information about the pages that have been visited in the session.
+
+You can open, close, resize, and move windows (although, this doesn’t mean you should!).
+
+The window.screen object provides information about the user’s screen.
+
+document.write() is an archaic method of writing text to the document and should be avoided.
+
+Cookies can be used to store small pieces of information between requests using the document.cookie property.
+
+The window.setTimeout() method can be used to invoke a function after a set amount of time. It can be canceled using the clearTimeout() method.
+
+The window.setInterval() method can be used to repeatedly invoke a function. It can be stopped using the clearInterval() method.
+
+The window.requestAnimationFrame() method can be used to produce smooth and optimized animation by utilizing the browser's built-in graphics capabilities. It can be canceled using the cancelAnimationFrame() method.
+
+
+________________________________________
+****************************************
+
+CHAPTER 14: HTML APIs 
+
+the data- attribute
+
+ - a way of embedding data in a web page using custom attributes that are
+ ignored by the browser. - sole purpose is to be used by a JavaScript program
+
+ must use the following format: 
+
+ * start with data-
+ * contain only lowercase letters, numbers, hyphens, dots, colons or underscores
+ * include an optional string value
+
+ Examples:
+data-powers = 'flight superSpeed'
+data-rating = '5' 
+data-dropdown 
+data-user = 'DAZ' 
+data-max-length = '32'
+
+Data attributes provide a convenient way of adding data directly into the HTML markup,
+enabling a richer user experience. 
+
+HTML5 APIs 
+
+HTML5 Web Storage
+
+crucial differences with cookies:
+*information stored is not shared with the server on every request
+* information is available in multiple windows of the browser(if domain is the same)
+* storage capacity is much larger than the 4k limit for cookies. (There is no
+actual limit in the specification, but most browsers have a limit set at 5GB per domain.)
+* Any data stored does not automatically expire as it does with cookies. 
+
+If a browser supports the Web Storage API, the window object will have a 
+localStorage property. 
+ - also a sessionStorage object that works the same way, except the data is only
+ saved for the current session. 
+
+ localStorage.setItem('name', 'Walter White');
+
+ - completely close browser, then enter the following code in the console:
+
+ localStorage.getItem('name');
+ << "Walter White"
+
+ Rather than using getItem() and setItem() methods, assignment can be used instead.
+ here we simply reference localStorage.name as if it was a variable to change its value:
+
+ localStorage.name = 'Heisenberg';
+
+ console.log(localStorage.name);
+ << "Heisenberg";
+
+ To remove an entity from local storage, use the removeItem method:
+
+ localStorage.removeItem('name');
+
+ or can use the delete operator:
+
+ delete localStorage.name;
+
+ to completely remove everything stored in local storage, use the clear() method.
+
+ localStorage.clear();
+
+
+
+ GEOLOCATION
+
+ if GEOLOCATION is available, it will be a property of the navigator object. This
+ property has a method called getCurrentPosition() that will return a position object
+ to a specified callback function, call youAreHere() in the example:
+
+ navigator.GEOLOCATION.getCurrentPosition(youAreHere);
+
+ alert dialog that displays the user's coordiates:
+
+ function youAreHere(position) {
+    console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`); 
+}
+
+position object has several other properties to find out info about the location and movememnt of the device:
+
+* position.speed 
+* position.altitude 
+* position.heading
+* position.timestamp
+
+position.accuracy
+
+More info: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+
+
+Web Workers
+ - allows processes to run in the background
+
+ const worker = new Worker('task.js');
+
+ WEBSOCKETS
+
+ https://www.websocket.org/demos.html
+
+ - created a websockets app
+
+
+ Notifications
+
+ - must get permission granted by the user. 
+ - use the requestPermission() method of a Notification global object
+
+ if(window.Notification) {
+    Notification.requestPermission();
+}
+
+*this will ask permission to send Notifications
+
+if granted, create a new Notification using a constructor function:
+
+if(window.Notification) {
+    Notification.requestPermission()
+    .then((permission) => {
+        if(Notification.permission === 'granted') {
+        new Notification('Hello JavaScript!');
+        }
+    });
+}
+
+const notification = new Notification('JavaScript: Novice to Ninja',{
+    body: 'The new book from SitePoint',
+    icon: 'sitepointlogo.png'
+});
+
+to close the notification programmatically use the close() method:
+
+notification.close();
+
+More info: https://developer.mozilla.org/en-US/docs/Web/API/notification
+
+MultiMedia
+
+HTML5 made it easier to display audio and video files
+
+<audio src='/song.mp3' controls>
+Your browser does not support the audio element.
+</audio>
+
+<video src='http://movie.mp4' controls>
+    Your browser does not support the video element.
+</video>
+
+
+video.addEventListener('pause', () => {
+console.log('The video has been paused'); }, false)
+
+https://www.w3.org/2010/05/video/mediaevents.html
+
+More info about Canvas:
+
+https://www.sitepoint.com/premium/books/jump-start-html5/
+
+
+Chapter Summary
+HTML5.1 is the latest incarnation of the Hypertext Markup Language. It covers a variety of technologies, including several APIs that are accessible using JavaScript.
+
+data- attributes help to embed custom data into a web page that can then be used to enhance the user experience with JavaScript.
+
+The Web Storage API allows key-value pairs to be stored on the user’s device in a similar way to cookies, but without the same storage restrictions.
+
+The Geolocation API allows you to access the geographic coordinates of the user’s device, as long as the user gives permission.
+
+The Web Worker API can be used to perform computationally intensive tasks in the background, which helps to avoid websites becoming unresponsive.
+
+Websockets are a new protocol for communicating over the internet, and allow real-time, two-way communication.
+
+The Notification API allows you to display notifications on the user's system.
+
+The <audio> and <video> elements can be employed to embed audio tracks and video clips in a web page. They also have a Media API that can help control the playback using JavaScript.
+
+The canvas element can be used to dynamically draw geometric shapes, text, and images on a web page in real-time using JavaScript.
+
+A shim or polyfill is a piece of code that adds support of missing features to older browsers.
